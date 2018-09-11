@@ -69,17 +69,23 @@
   tags:
     - tools_and_workflows
 
-- include: stop_paste_server.yml
-  tags:
-    - tools_and_workflows
-    - stop_paste_server
-
 - include: install_local_tools.yml
   become: yes
   become_user: "{{galaxy_user_name}}"
   tags:
     - tools_and_workflows
     - install_local_tools
+
+- include: install_conda_deps.yml
+  tags:
+    - tools_and_workflows
+    - install_local_tools
+    - install_conda_deps
+
+- include: stop_paste_server.yml
+  tags:
+    - tools_and_workflows
+    - stop_paste_server
 
 - include: glimmerhmm.yml
   when: tool_dependency_dir and galaxy_config_default['app:main']['tool_data_table_config_path'] and galaxy_server_dir and (workflow_check.stdout == "yes")

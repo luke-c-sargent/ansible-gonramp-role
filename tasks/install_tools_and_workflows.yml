@@ -48,11 +48,7 @@
 
 - name: "Install Tools and Workflows (WARNING: LENGTHY PROCESS!)"
   command: "/tmp/gonramp/./install_workflows.py -a 127.0.0.1:{{ paste_installer_port | default('80') }} -k {{ default_admin_api_key }} -wd /tmp/gonramp/workflows -t"
-  async: 9000 # wait 2 hours, polling every 10 seconds...
-
-- name: "Install any missed tool dependencies via conda"
-  command: "/tmp/gonramp/./install_dependencies.py -a 127.0.0.1 -k {{ default_admin_api_key }}"
-  async: 3600 # wait 60 minutes, tho likely much shorter
+  async: 9000 # wait 2.5 hours, polling every 10 seconds, tho likely sooner
 
 - import_tasks: zombiecheck.yml
   become: yes
