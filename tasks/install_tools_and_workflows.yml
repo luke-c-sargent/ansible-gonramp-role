@@ -27,12 +27,6 @@
     dest: "/tmp/gonramp/install_tool_yml.py"
     mode: 0755
 
-- name: "Copy dependency script to remote temp directory"
-  copy:
-    src: "{{ role_path }}/scripts/install_dependencies.py"
-    dest: "/tmp/gonramp/install_dependencies.py"
-    mode: 0755
-
 - name: "Copy tool addenda file to remote temp directory"
   copy:
     src: "{{ role_path }}/files/tool_addenda.yml"
